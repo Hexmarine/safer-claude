@@ -1,0 +1,80 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /home/ubuntu/dev/sensorsyn log --oneline -5)",
+      "Bash(git -C /home/ubuntu/dev/sensorsyn status --short)",
+      "Bash(npm run *)",
+      "Bash(awk *)",
+      "Bash(aws eks *)",
+      "Bash(aws ecr *)",
+      "Bash(aws secretsmanager *)",
+      "Bash(gh run *)",
+      "Bash(kubectl --context safer-ops-prod get nodes)",
+      "Bash(kubectl --context safer-ops-prod -n safer-ops get pods -o wide)",
+      "Bash(kubectl --context safer-ops-prod -n safer-ops get deploy -o custom-columns='NAME:.metadata.name,READY:.status.readyReplicas,IMAGE:.spec.template.spec.containers[*].image')",
+      "Bash(kubectl --context safer-ops-prod -n flux-system get kustomizations,helmreleases)",
+      "Bash(kubectl --context safer-ops-prod -n safer-ops apply --dry-run=server -f deploy/gitops/apps/safer-ops/prod/deployment-api.yaml)",
+      "Bash(kubectl --context safer-ops-prod -n safer-ops kustomize deploy/gitops/apps/safer-ops/prod/)",
+      "Bash(git fetch *)",
+      "Bash(kubectl --context safer-ops-prod -n flux-system get imageupdateautomations -o custom-columns='NAME:.metadata.name,LASTRUN:.status.lastAutomationRunTime,LASTCOMMIT:.status.lastPushCommitStatus')",
+      "Bash(kubectl --context safer-ops-prod -n safer-ops get pods)",
+      "Bash(kubectl --context safer-ops-prod -n safer-ops get pod safer-ops-api-b6d4cc77b-hhcsv -o jsonpath='{.spec.initContainers[*].image}{\"\\\\n\"}{.spec.containers[*].image}')",
+      "Bash(kubectl --context safer-ops-prod -n safer-ops logs safer-ops-api-b6d4cc77b-hhcsv -c migrate)",
+      "Bash(kubectl --context safer-ops-prod -n safer-ops get pod safer-ops-api-b6d4cc77b-hhcsv -o jsonpath='{.status.initContainerStatuses[*]}')",
+      "Bash(kubectl --context safer-ops-prod -n safer-ops exec deploy/safer-ops-api -c api -- sh -c 'echo \"show table kits columns? Need a way... skipping shell-DB; checking via /healthz only\"; echo \"healthz:\"; node -e \"fetch\\(\\\\\"http://localhost:8080/healthz\\\\\"\\).then\\(r=>r.text\\(\\)\\).then\\(t=>console.log\\(t\\)\\)\"')",
+      "Bash(docker --version)",
+      "Bash(docker info *)",
+      "Bash(pnpm migrate *)",
+      "Bash(pnpm dev *)",
+      "Bash(curl -sf http://127.0.0.1:18080/healthz)",
+      "Bash(curl -sf http://127.0.0.1:5175/)",
+      "Bash(curl -s http://127.0.0.1:18080/healthz)",
+      "Bash(curl -s http://127.0.0.1:18080/api/status)",
+      "Bash(pnpm typecheck *)",
+      "Bash(npx tsc *)",
+      "Bash(pnpm --filter @safer-ops/api exec tsc --noEmit)",
+      "Bash(pnpm --filter @safer-ops/web build)",
+      "Bash(pnpm --filter @safer-ops/api test)",
+      "Bash(pnpm prisma:generate)",
+      "Bash(pnpm --filter @safer-ops/shared build)",
+      "Bash(pnpm --filter @safer-ops/api build)"
+    ],
+    "deny": [
+      "Bash(kubectl edit*)",
+      "Bash(kubectl * edit*)"
+    ],
+    "ask": [
+      "Bash(aws secretsmanager get-secret-value*)",
+      "Bash(aws ssm get-parameter* --with-decryption*)",
+      "Bash(aws ssm get-parameters* --with-decryption*)"
+    ],
+    "defaultMode": "default"
+  },
+  "model": "claude-fable-5[1m]",
+  "worktree": {
+    "baseRef": "fresh"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /home/ubuntu/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    }
+  },
+  "effortLevel": "medium",
+  "autoUpdatesChannel": "latest",
+  "skipWorkflowUsageWarning": true,
+  "theme": "auto",
+  "editorMode": "normal",
+  "inputNeededNotifEnabled": false,
+  "agentPushNotifEnabled": false,
+  "skipAutoPermissionPrompt": true
+}

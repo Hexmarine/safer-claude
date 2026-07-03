@@ -1,0 +1,15 @@
+# Whitelist repo: ignore everything, re-include only curated knowledge/config.
+# NEVER weaken the top rule — this dir contains .credentials.json and session
+# transcripts (projects/*/), which must not be committed.
+/*
+!/.gitignore
+!/CLAUDE.md
+!/settings.json
+!/keybindings.json
+!/statusline-command.sh
+!/plans/
+!/projects/
+/projects/*
+!/projects/*
+/projects/*/*
+!/projects/*/memory/

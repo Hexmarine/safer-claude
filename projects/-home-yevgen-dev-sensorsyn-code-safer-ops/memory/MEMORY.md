@@ -1,0 +1,2 @@
+- [Multi-tab session & SSO login](multi-tab-session-sso.md) — why depot+installer can't share a browser; the auto-sign-in/SSO-restart fix for the login "oops"
+- [UX worktree run setup](ux-worktree-run-setup.md) — how to run safer-ops-ux for UI polish; mock-auth has no operator Sensor token
