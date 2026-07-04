@@ -11,6 +11,7 @@ Hooks only — the facts live in the topic files; closed incidents are archived 
 - [Check branch before crying drift](edit-location-agency-deploy-drift.md) — edit-location-agency IS live + on master (`a06534130`); check current branch + `git log --all -S` before concluding lost code.
 
 ## Workstation, access & tooling
+- [Workstation restic backup](workstation-restic-backup.md) — 3 durability layers since 2026-07-04: git repos + restic→B2 6-hourly (portable, runbook 15 Path A2) + EBS DLM daily; repo password ONLY in user's password manager.
 - [Workstation setup (EC2)](workstation-setup-ec2.md) — AWS needs AWS_PROFILE=sensorsyn-mfa (12h MFA via aws-mfa-login.sh; default profile has zero perms); kubeconfig=safer-ops-prod; tier2-guard hook deliberately unwired.
 - [Prod read diag tooling](sensor-prod-read-diag-tooling.md) — scripts/diag/ read-only on-instance Mongo wrapper (prod-read.py); secret reads ask-gated; fetch-to-use OK, never print values.
 - [Playwright MCP headless setup](playwright-mcp-headless-setup.md) — browser automation on this headless box = Playwright MCP with --executable-path to ms-playwright chromium; claude-in-chrome has nothing to attach to.

@@ -37,6 +37,12 @@ infra cron → `/users/properties/sync-corpsure-insurance-data`) and Odoo weekly
   from `.env.example`.
 - Consumed invites are DESTROYED → funnel analytics unrecoverable.
 
+**Direction (2026-07-04):** any revival is driven from the SAFERHOMES side
+(safer-ops), not Sensor — reuse Sensor as-is, change it only where tailoring
+requires; prefer the proven pattern of additive Sensor endpoints (Class A) +
+safer-ops UI/schedulers over Class-C edits to shared core
+(`properties.entity.ts`).
+
 **Why it stalled (diagnosis):** timing (offers fire at invite, not at the
 landlord's insurance-renewal window) + funnel break (redirect to CorpSure's
 hosted form; unanswerable rebuild-cost questions that NEXU was meant to
